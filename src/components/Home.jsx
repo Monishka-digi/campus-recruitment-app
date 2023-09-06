@@ -1,48 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Multiselect from "multiselect-react-dropdown";
 import { keyConvertor } from "../utils";
 import { details } from "../contant";
 import { FaArrowRight } from "react-icons/fa6";
+import { useCampus } from "../Hooks/CampusHooks";
 
 const Home = () => {
-  const [campusData, setCampusData] = useState({
-    campus_name: "",
-    title: "",
-    description: "",
-    start_date: "",
-    end_date: "",
-    test_duration: "",
-    total_marks: "",
-    passing_marks: "",
-    tags: [],
-  });
-  const onSelect = (selectedList, selectedItem) => {
-    // console.log(selectedItem);
-    // console.log("selectedList", selectedList)
-    setCampusData({
-        ...campusData,
-        tags: selectedList.map(item => item.key)
-    })
-  };
-  const onRemove = (selectedList, removedItem) => {
-    // console.log(removedItem);
-    // console.log("selectedList", selectedList)
-    setCampusData({
-        ...campusData,
-        tags: selectedList.map(item => item.key)
-    })
-  };
-  const handleChange = (event) => {
-   const { name, value } = event.target
-   setCampusData({
-    ...campusData, 
-    [keyConvertor(name)]: value
-   })
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("clicked", campusData);
-  };
+  const {
+    campusData,
+    onSelect,
+    onRemove,
+    handleChange,
+    handleSubmit,
+  } = useCampus();
   return (
     <div className="mx-auto max-w-md p-6 mt-5 shadow-lg rounded-lg">
       <div className="ml-56 p-3 mt-2 mx-80fixed rounded-l-lg">
@@ -79,10 +49,7 @@ const Home = () => {
             </div>
           )
         )}
-        <button
-          className="bg-teal-400 rounded-full mt-3 ms-80 p-2 text-xl text-white font-semibold shadow-lg  "
-          
-        >
+        <button className="bg-teal-400 rounded-full mt-3 ms-80 p-2 text-xl text-white font-semibold shadow-lg  ">
           <FaArrowRight onClick={handleSubmit} />
         </button>
       </form>
