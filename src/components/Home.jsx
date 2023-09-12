@@ -18,7 +18,7 @@ const Home = () => {
     event.preventDefault();
     try {
       showAlert("loading", "🦄 Checking form validation");
-      const result = await homeFormSchema(campusData);
+      await homeFormSchema(campusData);
       showAlert("success", `🦄 Data Validated Navigating to next page !!`);
       setTimeout(() => {
         navigate("/add-questions");
@@ -64,6 +64,7 @@ const Home = () => {
                   onSearch={function noRefCheck() {}}
                   onSelect={onSelect}
                   options={options}
+                  selectedValues={campusData.tags}
                 />
               )}
             </div>
