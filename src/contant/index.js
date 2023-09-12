@@ -44,36 +44,36 @@ export const details = [
   {
     title: "Tags",
     options: [
-        {
-          cat: "next-js-13",
-          key: "Next JS 13",
-        },
-        {
-          cat: "javascript",
-          key: "JavaScript",
-        },
-        {
-          cat: "html",
-          key: "HTML",
-        },
-        {
-          cat: "css",
-          key: "CSS",
-        },
-        {
-          cat: "java",
-          key: "Java",
-        },
-        {
-          cat: "react-js",
-          key: "React JS",
-        },
-        {
-          cat: "typescript",
-          key: "TypeScript",
-        },
-      ],
-      
+      {
+        cat: "next-js-13",
+        key: "Next JS 13",
+      },
+      {
+        cat: "javascript",
+        key: "JavaScript",
+      },
+      {
+        cat: "html",
+        key: "HTML",
+      },
+      {
+        cat: "css",
+        key: "CSS",
+      },
+      {
+        cat: "java",
+        key: "Java",
+      },
+      {
+        cat: "react-js",
+        key: "React JS",
+      },
+      {
+        cat: "typescript",
+        key: "TypeScript",
+      },
+    ],
+
     isSelect: true,
     className: "text-sm w-30 px-3 py-2 bg-gray-100 rounded-md",
   },

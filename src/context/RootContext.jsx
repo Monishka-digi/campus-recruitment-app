@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const CampusContext = createContext()
+export const CampusContext = createContext();

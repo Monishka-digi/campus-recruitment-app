@@ -1,1 +1,2 @@
-export const keyConvertor = str => str.toLocaleLowerCase().replaceAll(" ", "_")
+export const keyConvertor = (str) =>
+  str.toLocaleLowerCase().replaceAll(" ", "_");

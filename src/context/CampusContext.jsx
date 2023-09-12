@@ -14,17 +14,13 @@ export const CampusProvider = ({ children }) => {
     passing_marks: "",
     tags: [],
   });
-  const onSelect = (selectedList, selectedItem) => {
-    // console.log(selectedItem);
-    // console.log("selectedList", selectedList)
+  const onSelect = (selectedList) => {
     setCampusData({
       ...campusData,
       tags: selectedList.map((item) => item.key),
     });
   };
-  const onRemove = (selectedList, removedItem) => {
-    // console.log(removedItem);
-    // console.log("selectedList", selectedList)
+  const onRemove = (selectedList) => {
     setCampusData({
       ...campusData,
       tags: selectedList.map((item) => item.key),
@@ -41,16 +37,21 @@ export const CampusProvider = ({ children }) => {
     event.preventDefault();
     console.log("clicked", campusData);
   };
-  const memoizedValue = useMemo(() => ({
-    campusData,
-    setCampusData,
-    onSelect,
-    onRemove,
-    handleChange,
-    handleSubmit,
-  }), [campusData]);
+  const memoizedValue = useMemo(
+    () => ({
+      campusData,
+      setCampusData,
+      onSelect,
+      onRemove,
+      handleChange,
+      handleSubmit,
+    }),
+    [campusData]
+  );
 
   return (
-    <CampusContext.Provider value={ memoizedValue }>{children}</CampusContext.Provider>
+    <CampusContext.Provider value={memoizedValue}>
+      {children}
+    </CampusContext.Provider>
   );
 };

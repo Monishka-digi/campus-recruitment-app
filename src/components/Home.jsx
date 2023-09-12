@@ -1,20 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa6";
 import Multiselect from "multiselect-react-dropdown";
+
 import { keyConvertor } from "../utils";
 import { details } from "../contant";
-import { FaArrowRight } from "react-icons/fa6";
 import { useCampus } from "../Hooks/CampusHooks";
 
-
 const Home = () => {
-  const {
-    campusData,
-    onSelect,
-    onRemove,
-    handleChange,
-    handleSubmit,
-  } = useCampus();
+  const { campusData, onSelect, onRemove, handleChange, handleSubmit } =
+    useCampus();
   const navigate = useNavigate();
   return (
     <div className="mx-auto max-w-md p-6 mt-5 shadow-lg rounded-lg">
@@ -53,7 +48,12 @@ const Home = () => {
           )
         )}
         <button className="bg-teal-400 rounded-full mt-3 ms-80 p-2 text-xl text-white font-semibold shadow-lg  ">
-          <FaArrowRight onClick={(e) => { handleSubmit(e); navigate("/add-questions");}}/>
+          <FaArrowRight
+            onClick={(e) => {
+              handleSubmit(e);
+              navigate("/add-questions");
+            }}
+          />
         </button>
       </form>
     </div>
