@@ -2,11 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import Multiselect from "multiselect-react-dropdown";
+import { ToastContainer, toast } from "react-toastify";
 
 import { keyConvertor } from "../utils";
 import { details } from "../contant";
 import { useCampus } from "../Hooks/CampusHooks";
 import { homeFormSchema } from "../schema/homeFormSchema";
+import { showAlert } from "./toast";
 
 const Home = () => {
   const { campusData, onSelect, onRemove, handleChange } = useCampus();
@@ -15,18 +17,20 @@ const Home = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      showAlert("loading", "🦄 Checking form validation");
       const result = await homeFormSchema(campusData);
-      console.log("Validation succeeded: " + result);
-      if (result) {
+      showAlert("success", `🦄 Data Validated Navigating to next page !!`);
+      setTimeout(() => {
         navigate("/add-questions");
-      }
+      }, 2500);
     } catch (error) {
-      console.error("Validation failed: " + error);
+      showAlert("error", `🦄 ${error}`);
     }
   };
 
   return (
     <div className="mx-auto max-w-md p-6 mt-5 shadow-lg rounded-lg">
+      <ToastContainer />
       <div className="ml-56 p-3 mt-2 mx-80fixed rounded-l-lg">
         <img src="assets/logo.png"></img>
       </div>
