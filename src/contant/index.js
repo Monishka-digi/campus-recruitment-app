@@ -80,3 +80,16 @@ export const details = [
     className: "text-sm w-30 px-3 py-2 bg-gray-100 rounded-md",
   },
 ];
+
+
+export const initialCampusData = {
+  campus_name: "",
+  title: "",
+  description: "",
+  start_date: "",
+  end_date: "",
+  test_duration: "",
+  total_marks: "",
+  passing_marks: "",
+  tags: [],
+}

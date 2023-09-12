@@ -17,8 +17,8 @@ export const homeFormSchema = (campusData) => {
         reject("Please choose correct end_date date !!");
       } else if (campusData.start_date > campusData.end_date) {
         reject("end_date Should be after start date !!");
-      } else if (campusData.test_duration % 5 !== 0) {
-        reject("Test Duration should be multiples of 5 !!");
+      } else if (campusData.test_duration % 5 !== 0 && campusData.test_duration > 0) {
+        reject("Test Duration should be positive and multiples of 5 !!");
       } else if (
         Number(campusData.total_marks) <= Number(campusData.passing_marks)
       ) {
