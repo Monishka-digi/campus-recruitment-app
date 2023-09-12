@@ -33,10 +33,7 @@ export const CampusProvider = ({ children }) => {
       [keyConvertor(name)]: value,
     });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("clicked", campusData);
-  };
+
   const memoizedValue = useMemo(
     () => ({
       campusData,
@@ -44,7 +41,6 @@ export const CampusProvider = ({ children }) => {
       onSelect,
       onRemove,
       handleChange,
-      handleSubmit,
     }),
     [campusData]
   );

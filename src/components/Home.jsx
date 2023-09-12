@@ -6,11 +6,25 @@ import Multiselect from "multiselect-react-dropdown";
 import { keyConvertor } from "../utils";
 import { details } from "../contant";
 import { useCampus } from "../Hooks/CampusHooks";
+import { homeFormSchema } from "../schema/homeFormSchema";
 
 const Home = () => {
-  const { campusData, onSelect, onRemove, handleChange, handleSubmit } =
-    useCampus();
+  const { campusData, onSelect, onRemove, handleChange } = useCampus();
   const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const result = await homeFormSchema(campusData);
+      console.log("Validation succeeded: " + result);
+      if (result) {
+        navigate("/add-questions");
+      }
+    } catch (error) {
+      console.error("Validation failed: " + error);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-md p-6 mt-5 shadow-lg rounded-lg">
       <div className="ml-56 p-3 mt-2 mx-80fixed rounded-l-lg">
@@ -21,7 +35,10 @@ const Home = () => {
           Test Details
         </header>
         {details.map(
-          ({ title, type, className, display, isSelect, options }, index) => (
+          (
+            { title, type, className, display, isSelect, options, min },
+            index
+          ) => (
             <div key={index} className={display}>
               <label className="block text-sm leading-loose">{title}</label>
               {!isSelect ? (
@@ -33,6 +50,7 @@ const Home = () => {
                   value={campusData[keyConvertor(title)]}
                   onChange={handleChange}
                   required
+                  min={type === "date" ? min : null}
                 />
               ) : (
                 <Multiselect
@@ -48,12 +66,7 @@ const Home = () => {
           )
         )}
         <button className="bg-teal-400 rounded-full mt-3 ms-80 p-2 text-xl text-white font-semibold shadow-lg  ">
-          <FaArrowRight
-            onClick={(e) => {
-              handleSubmit(e);
-              navigate("/add-questions");
-            }}
-          />
+          <FaArrowRight onClick={handleSubmit} />
         </button>
       </form>
     </div>

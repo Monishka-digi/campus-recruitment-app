@@ -16,12 +16,14 @@ export const details = [
     type: "date",
     className: "text-sm w-auto mr-1 px-3 py-2 mb-3 bg-gray-100 rounded-md",
     display: "inline-block",
+    min: new Date().toISOString().split("T")[0],
   },
   {
     title: "End Date",
     type: "date",
     className: "text-sm w-auto mr-1 px-3 py-2 mb-3 bg-gray-100 rounded-md",
     display: "inline-block",
+    min: new Date().toISOString().split("T")[0],
   },
   {
     title: "Test Duration",
