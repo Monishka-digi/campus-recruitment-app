@@ -1,17 +1,6 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-// import Layout from './components/Layout'
-import Home from './components/Home'
+import React from "react";
+import Home from "./components/Home";
 
+const App = () => <Home />;
 
-const App = () => {
-  return (
-<>
-<Routes>
-    <Route path='/' element={<Home/>}/>
-</Routes>
-</>
-  )
-}
-
-export default App
+export default App;
